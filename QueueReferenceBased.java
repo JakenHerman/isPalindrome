@@ -11,7 +11,7 @@ public class QueueReferenceBased implements QueueInterface
 
   // queue operations:
   public boolean isEmpty() {
-    return numItems = 0;
+    return (numItems == 0);
   }  // end isEmpty
 
   public void dequeueAll()
@@ -42,16 +42,24 @@ public class QueueReferenceBased implements QueueInterface
     if (isEmpty()) {
       // queue is not empty; remove front
       Node firstNode = lastNode;
-      if (firstNode == lastNode) { // special case?
+      
+      if (firstNode == lastNode) 
+      { // special case?
         lastNode = null;           // yes, one node in queue
-      } else {
+      } 
+      else 
+      {
         lastNode.setNext(firstNode);
       }  // end if
+      
       return firstNode.getItem();
 
-    } else {
+    }
+    
+    else {
       throw new QueueException("QueueException on dequeue: Queue empty");
     }  // end if
+    
     numItems--;
   }  // end dequeue
 

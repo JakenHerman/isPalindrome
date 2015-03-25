@@ -4,7 +4,7 @@ public class QueueListBased implements QueueInterface
 
   public QueueListBased()
   {
-    aList == null;
+    aList = null;
   }  // end default constructor
 
   // queue operations:
