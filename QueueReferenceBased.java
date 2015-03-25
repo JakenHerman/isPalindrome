@@ -1,20 +1,23 @@
 public class QueueReferenceBased implements QueueInterface
 {
   private Node lastNode;
+  private int numItems = 0;
 
   public QueueReferenceBased()
   {
-    lastNode == null;
+    lastNode = null;
+    numItems = 0;
   }  // end default constructor
 
   // queue operations:
   public boolean isEmpty() {
-    return true;
+    return numItems = 0;
   }  // end isEmpty
 
   public void dequeueAll()
   {
-    lastNode == null;
+    lastNode = null;
+    numItems = 0;
   }  // end dequeueAll
 
   public void enqueue(Object newItem)
@@ -30,7 +33,7 @@ public class QueueReferenceBased implements QueueInterface
       newNode.setNext(lastNode);
       lastNode.setNext(newNode);
     }  // end if
-
+    numItems++;
     lastNode = newNode;  // new node is at back
   }  // end enqueue
 
@@ -49,6 +52,7 @@ public class QueueReferenceBased implements QueueInterface
     } else {
       throw new QueueException("QueueException on dequeue: Queue empty");
     }  // end if
+    numItems--;
   }  // end dequeue
 
   public Object peek() throws QueueException
