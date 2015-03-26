@@ -1,3 +1,5 @@
+import ListReferenceBased.*;
+
 public class QueueReferenceBased implements QueueInterface
 {
   private Node lastNode;
@@ -42,25 +44,24 @@ public class QueueReferenceBased implements QueueInterface
     if (isEmpty()) {
       // queue is not empty; remove front
       Node firstNode = lastNode;
-      
-      if (firstNode == lastNode) 
+
+      if (firstNode == lastNode)
       { // special case?
         lastNode = null;           // yes, one node in queue
-      } 
-      else 
+      }
+      else
       {
         lastNode.setNext(firstNode);
       }  // end if
-      
+
+      numItems--;
       return firstNode.getItem();
 
     }
-    
+
     else {
       throw new QueueException("QueueException on dequeue: Queue empty");
     }  // end if
-    
-    numItems--;
   }  // end dequeue
 
   public Object peek() throws QueueException
