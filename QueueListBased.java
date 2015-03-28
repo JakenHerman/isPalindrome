@@ -1,11 +1,12 @@
 import ListReferenceBased.*;
+
 public class QueueListBased implements QueueInterface
 {
   private ListInterface aList;
 
   public QueueListBased()
   {
-    aList = null;
+    aList = new ListReferenceBased();
   }  // end default constructor
 
   // queue operations:
@@ -16,15 +17,15 @@ public class QueueListBased implements QueueInterface
 
   public void enqueue(Object newItem)
   {
-    aList.add(aList.size()-1, newItem);
+    aList.add(aList.size(), newItem);
   }  // end enqueue
 
   public Object dequeue() throws QueueException
   {
-    if (isEmpty()) {
+    if (!aList.isEmpty()) {
       // queue is not empty; remove front
-      Object queueFront = aList.get(1);
-      aList.remove(1);
+      Object queueFront = aList.get(0);
+      aList.remove(0);
       return queueFront;
     } else {
       throw new QueueException("Queue exception on dequeue: Queue empty");
@@ -38,9 +39,9 @@ public class QueueListBased implements QueueInterface
 
   public Object peek() throws QueueException
   {
-    if (isEmpty()) {
+    if (!isEmpty()) {
       // queue is not empty; retrieve front
-      return aList.get(1);
+      return aList.get(0);
     } else {
       throw new QueueException("Queue exception on peek: Queue empty");
     }  // end if

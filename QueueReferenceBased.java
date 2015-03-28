@@ -29,10 +29,10 @@ public class QueueReferenceBased implements QueueInterface
     // insert the new node
     if (isEmpty()) {
       // insertion into empty queue
-      newNode.setNext(null);
+      newNode.setNext(newNode);
     } else {
       // insertion into nonempty queue
-      newNode.setNext(lastNode);
+      newNode.setNext(lastNode.getNext());
       lastNode.setNext(newNode);
     }  // end if
     numItems++;
@@ -41,32 +41,25 @@ public class QueueReferenceBased implements QueueInterface
 
   public Object dequeue() throws QueueException
   {
-    if (isEmpty()) {
+    if (!isEmpty()) {
       // queue is not empty; remove front
-      Node firstNode = lastNode;
-
-      if (firstNode == lastNode)
-      { // special case?
-        lastNode = null;           // yes, one node in queue
-      }
-      else
-      {
-        lastNode.setNext(firstNode);
-      }  // end if
-
-      numItems--;
+      Node firstNode = lastNode.getNext();
+      if (firstNode == lastNode){ // special case?
+        lastNode = null;          // yes, one node in queue
+        numItems--;
+      } else { //more than one item
+        lastNode.setNext(firstNode.getNext());
+   	    numItems--;
+   	  }  // end if
       return firstNode.getItem();
-
-    }
-
-    else {
+    } else {
       throw new QueueException("QueueException on dequeue: Queue empty");
     }  // end if
   }  // end dequeue
 
   public Object peek() throws QueueException
   {
-    if (isEmpty()) {
+    if (!isEmpty()) {
       // queue is not empty; retrieve front
       Node firstNode = lastNode;
       return firstNode.getItem();
@@ -75,7 +68,7 @@ public class QueueReferenceBased implements QueueInterface
     }  // end if
   }  // end peek
 
-
+  @Override
   public String toString()
   {
 	  return null;

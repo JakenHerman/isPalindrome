@@ -1,6 +1,6 @@
 public class QueueArrayBased implements QueueInterface
 {
-  private final int MAX_QUEUE = 50; // maximum size of queue
+  final int MAX_QUEUE = 50; // maximum size of queue
   private Object items[];
   private int front, back, numItems;
 
@@ -65,10 +65,10 @@ public class QueueArrayBased implements QueueInterface
     }  // end if
   }  // end peek
 
-
+  @Override
   public String toString()
   {
-	  return null;
+	  return ;
   } // end of toString
 
 
