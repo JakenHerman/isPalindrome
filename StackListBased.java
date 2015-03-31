@@ -1,3 +1,5 @@
+import ListReferenceBased.*;
+
 public class StackListBased implements StackInterface{
 	private ListInterface list;
 
@@ -13,13 +15,13 @@ public class StackListBased implements StackInterface{
 		list.add(0, newItem);
 	}
 
-	public Object pop() throws StackException{
+	public Object pop() throws QueueException{
 		if(!list.isEmpty()){
 			Object temp = list.get(0);
 			list.remove(0);
 			return temp;
 		} else {
-			throw new StackException("StackException on pop: Stack Empty");
+			throw new QueueException("StackException on pop: Stack Empty");
 		}
 	}
 
@@ -27,17 +29,22 @@ public class StackListBased implements StackInterface{
 		list.removeAll();
 	}
 
-	public Object peek() throws StackException{
+	public Object peek() throws QueueException{
 		if(!isEmpty()) return list.get(0);
 		else {
-			throw new StackException("StackException on peek: Stack empty");
+			throw new QueueException("StackException on peek: Stack empty");
 		}
 	}
 
    @Override
    public String toString()
    {
- 	  return null;
+ 	StringBuilder s = new StringBuilder();
+ 	for(int i = 0; i < list.size(); i++){
+		s.append(list.get(i)+" ");
+	}
+	return s.toString();
+
    } // end of toString
 
 }

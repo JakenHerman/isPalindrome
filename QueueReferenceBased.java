@@ -11,6 +11,7 @@ public class QueueReferenceBased implements QueueInterface
     numItems = 0;
   }  // end default constructor
 
+
   // queue operations:
   public boolean isEmpty() {
     return (numItems == 0);
@@ -68,10 +69,26 @@ public class QueueReferenceBased implements QueueInterface
     }  // end if
   }  // end peek
 
-  @Override
-  public String toString()
-  {
-	  return null;
+
+  public String toString(){
+	/*
+	*
+     StringBuilder s = new StringBuilder();
+	 for(int i = 0; i < numItems; i++){
+		 s.append(items[front+i]+" ");
+	 }
+	 return s.toString();
+	 *
+	*
+	*/
+
+	StringBuilder s = new StringBuilder();
+	for(int i = 0; i < numItems; i++){
+		s.append(lastNode.getNext().getItem()+" ");
+		this.dequeue();
+		numItems++;
+	}
+	return s.toString();
   } // end of toString
 
 } // end QueueReferenceBased

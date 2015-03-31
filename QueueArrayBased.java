@@ -65,10 +65,14 @@ public class QueueArrayBased implements QueueInterface
     }  // end if
   }  // end peek
 
-  @Override
   public String toString()
   {
-	  return ;
+
+	 StringBuilder s = new StringBuilder();
+	 for(int i = 0; i < numItems; i++){
+		 s.append(items[front+i]+" ");
+	 }
+	 return s.toString();
   } // end of toString
 
 

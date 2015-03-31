@@ -50,7 +50,14 @@ public class QueueListBased implements QueueInterface
 
   public String toString()
   {
-	  return null;
+
+ 	StringBuilder s = new StringBuilder();
+ 	for(int i = 0; i < aList.size(); i++){
+		s.append(aList.get(i)+" ");
+	}
+	return s.toString();
+
+
   } // end of toString
 
 }  // end QueueListBased
